@@ -1,8 +1,1 @@
-streamlit
-plotly
-pandas
-numpy
-requests
-google-generativeai
-python-dotenv
-streamlit-lottie
+-r requirements.txt

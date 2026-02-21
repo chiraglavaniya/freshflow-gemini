@@ -28,7 +28,7 @@ from analytics.anomaly import detect_anomaly
 from analytics.forecast import forecast_price
 
 # ---------------- AI ----------------
-from gemini.gemini_client import init_gemini, generate_insight
+from gemini.gemini_client import generate_insight
 
 # ---------------- AGENTS ----------------
 from agents.farmer_agent import farmer_view
@@ -45,7 +45,7 @@ api_key = os.getenv("DATA_GOV_API_KEY")
 df = fetch_mandi_data(api_key, limit)
 
 avg_price = df["modal_price"].mean()
-forecast = forecast_price(df["modal_price"].values)
+forecast = forecast_price(df["modal_price"].values, steps=1)[0]
 anomalies = detect_anomaly(df["modal_price"].values)
 
 # ---------------- HEADER ----------------
@@ -74,7 +74,6 @@ col3.info(f"📊 Analyst: {analyst_view('Uptrend')}")
 st.subheader("🤖 Gemini AI Commentary")
 
 if st.button("Generate Market Insight"):
-    model = init_gemini()
     summary = df["modal_price"].describe().to_string()
-    insight = generate_insight(model, summary)
+    insight = generate_insight(summary)
     st.success(insight)

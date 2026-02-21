@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FreshFlow Market Intelligence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Serif:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="page-glow page-glow-left"></div>
+    <div class="page-glow page-glow-right"></div>
+
+    <main class="layout">
+      <header class="hero">
+        <p class="eyebrow">FreshFlow Intelligence</p>
+        <h1>Agricultural Market Operations Dashboard</h1>
+        <p class="subhead">Website-ready view for mandi price monitoring, forecasting, anomaly signals, and AI commentary.</p>
+      </header>
+
+      <section class="controls card">
+        <label for="limit">Records</label>
+        <input id="limit" type="number" min="20" max="500" value="120" />
+        <label for="commodity">Commodity (optional)</label>
+        <input id="commodity" type="text" placeholder="e.g. Potato" />
+        <button id="refreshBtn">Refresh Dashboard</button>
+      </section>
+
+      <section class="metrics">
+        <article class="card metric-card">
+          <h2>Average Price</h2>
+          <p id="avgPrice">-</p>
+        </article>
+        <article class="card metric-card">
+          <h2>Forecast Price</h2>
+          <p id="forecastPrice">-</p>
+        </article>
+        <article class="card metric-card">
+          <h2>Anomalies</h2>
+          <p id="anomalyCount">-</p>
+        </article>
+        <article class="card metric-card">
+          <h2>Trend</h2>
+          <p id="trend">-</p>
+        </article>
+      </section>
+
+      <section class="card chart-card">
+        <h2>Price Movement</h2>
+        <canvas id="priceChart" height="120"></canvas>
+      </section>
+
+      <section class="agents-grid">
+        <article class="card">
+          <h3>Farmer Agent</h3>
+          <p id="farmerInsight">-</p>
+        </article>
+        <article class="card">
+          <h3>Trader Agent</h3>
+          <p id="traderInsight">-</p>
+        </article>
+        <article class="card">
+          <h3>Analyst Agent</h3>
+          <p id="analystInsight">-</p>
+        </article>
+      </section>
+
+      <section class="card insight-panel">
+        <h2>AI Market Insight</h2>
+        <textarea id="context" rows="3" placeholder="Optional context for AI insight"></textarea>
+        <button id="insightBtn">Generate Insight</button>
+        <p id="insightSource"></p>
+        <pre id="insightText"></pre>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/static/app.js"></script>
+  </body>
+</html>

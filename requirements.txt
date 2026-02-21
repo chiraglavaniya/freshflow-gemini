@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+pandas
+numpy
+requests
+google-generativeai
+python-dotenv
+pydantic-settings
+pytest
+httpx
