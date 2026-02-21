@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import Optional
 
 from pydantic import BaseModel, Field
 
@@ -32,8 +33,8 @@ class DashboardResponse(BaseModel):
 
 class InsightRequest(BaseModel):
     limit: int = Field(default=120, ge=20, le=500)
-    commodity: str | None = None
-    context: str | None = None
+    commodity: Optional[str] = None
+    context: Optional[str] = None
 
 
 class InsightResponse(BaseModel):

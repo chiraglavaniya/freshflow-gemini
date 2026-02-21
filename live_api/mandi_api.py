@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import random
+from typing import Optional
 
 import numpy as np
 import pandas as pd
@@ -17,7 +18,7 @@ def _synthetic_data(limit: int) -> pd.DataFrame:
     return pd.DataFrame({"modal_price": series})
 
 
-def fetch_mandi_data(api_key: str | None, limit: int = 100, commodity: str | None = None) -> pd.DataFrame:
+def fetch_mandi_data(api_key: Optional[str], limit: int = 100, commodity: Optional[str] = None) -> pd.DataFrame:
     if not api_key:
         return _synthetic_data(limit)
 

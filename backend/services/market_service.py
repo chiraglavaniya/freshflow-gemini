@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Optional
 
 import numpy as np
 
@@ -32,7 +33,7 @@ def _classify_trend(series: np.ndarray) -> str:
     return "Sideways"
 
 
-def build_dashboard(limit: int, api_key: str | None, commodity: str | None = None) -> DashboardPayload:
+def build_dashboard(limit: int, api_key: Optional[str], commodity: Optional[str] = None) -> DashboardPayload:
     frame = fetch_mandi_data(api_key=api_key, limit=limit, commodity=commodity)
     prices = frame["modal_price"].astype(float).to_numpy()
 

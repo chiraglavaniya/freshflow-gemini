@@ -1,8 +1,10 @@
+from typing import Optional
+
 from backend.services.market_service import DashboardPayload
 from gemini.gemini_client import generate_insight
 
 
-def build_prompt(payload: DashboardPayload, context: str | None = None) -> str:
+def build_prompt(payload: DashboardPayload, context: Optional[str] = None) -> str:
     prompt = (
         "You are an agriculture market analyst. "
         "Provide a concise strategy note for farmers and traders.\n"
@@ -19,7 +21,7 @@ def build_prompt(payload: DashboardPayload, context: str | None = None) -> str:
     return prompt
 
 
-def generate_market_insight(payload: DashboardPayload, context: str | None = None) -> tuple[str, str]:
+def generate_market_insight(payload: DashboardPayload, context: Optional[str] = None) -> tuple[str, str]:
     prompt = build_prompt(payload, context)
     try:
         return generate_insight(prompt), "gemini"

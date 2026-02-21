@@ -1,4 +1,5 @@
 from datetime import datetime, timezone
+from typing import Optional
 
 from fastapi import APIRouter, Query
 
@@ -25,7 +26,7 @@ def health_check() -> HealthResponse:
 @router.get("/dashboard", response_model=DashboardResponse)
 def get_dashboard(
     limit: int = Query(default=120, ge=20, le=500),
-    commodity: str | None = Query(default=None),
+    commodity: Optional[str] = Query(default=None),
 ) -> DashboardResponse:
     settings = get_settings()
     payload = build_dashboard(limit=limit, api_key=settings.data_gov_api_key, commodity=commodity)

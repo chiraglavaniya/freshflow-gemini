@@ -1,7 +1,8 @@
 import numpy as np
+from typing import Dict, List, Union
 
 
-def detect_anomaly(prices, z_threshold: float = 2.0) -> list[dict[str, float | int]]:
+def detect_anomaly(prices, z_threshold: float = 2.0) -> List[Dict[str, Union[float, int]]]:
     series = np.asarray(prices, dtype=float)
     if series.size < 3:
         return []
